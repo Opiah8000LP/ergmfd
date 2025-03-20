@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinning Insanity</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            text-align: center;
+        }
+        .text {
+            font-size: 3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            animation: spin 5s linear infinite;
+            background-image: linear-gradient(45deg, red, orange, yellow, green, cyan, blue, violet);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .subtext {
+            font-size: 0.8rem;
+            color: white;
+            opacity: 0.7;
+        }
+        @keyframes spin {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" onclick="speedUp()">
+        <div class="text" id="crazyText">I AM ACTUALLY GOING INSANE</div>
+        <div class="subtext">(this is a cry for help)</div>
+    </div>
+
+    <script>
+        let speed = 5;
+        function speedUp() {
+            speed = Math.max(0.5, speed - 0.5);
+            document.querySelector('.text').style.animation = `spin ${speed}s linear infinite`;
+        }
+    </script>
+</body>
+</html>
